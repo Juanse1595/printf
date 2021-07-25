@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] =='%')
+			if (format[i + 1] == '%')
 			{
 				_putchar('%');
 				i++;
@@ -27,12 +27,10 @@ int _printf(const char *format, ...)
 			else
 			{
 				/* Become function if match .NULL if not match*/
-				/* i == %, send next value */
-				f = aux_function(&format[i + 1]);
+				f = aux_function(&format[i + 1]); /* i == %, send next value */
 				if (f)
 				{
-					/* Print input and return an integer*/
-					sum = sum + f(list);
+					sum = sum + f(list); /* Print input and return an integer*/
 					i++;
 				}
 				else
@@ -75,7 +73,7 @@ int (*aux_function(const char *format))(va_list)
 	{
 		if (*(rows[j].letter) == *format)
 		{
-			return (rows[j].f); /* this could be removed*/
+			/* return (rows[j].f);  this could be removed */
 			break;
 		}
 		j++;

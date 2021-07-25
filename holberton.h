@@ -24,6 +24,6 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int print_char(va_list);
 int print_str(va_list);
-
+int (*aux_function(const char *format))(va_list);
 
 #endif /* _HOLBERTON_H_ */

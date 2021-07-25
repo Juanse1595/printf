@@ -26,7 +26,6 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				/* Become function if match .NULL if not match*/
 				f = aux_function(&format[i + 1]); /* i == %, send next value */
 				if (f)
 				{
@@ -34,7 +33,8 @@ int _printf(const char *format, ...)
 					i++;
 				}
 				else
-					;/* Error: char not found after %*/
+				{
+				}
 			}
 		}
 		else

@@ -1,12 +1,15 @@
+#include "holberton.h"
+
 /**
  * print_char - prints a char
- * @c: Char to print 
+ * @c: Char to print
  * Return: length of char
  */
 
 int print_char(va_list c)
 {
 	char x = va_arg(c, int);
+	_putchar(x);
 	return (1);
 }
 

@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 					i++;
 				}
 				else
-					;/* Error: char not fount after %*/
+					;/* Error: char not found after %*/
 			}
 		}
 		else
@@ -65,7 +65,6 @@ int (*aux_function(const char *format))(va_list)
 	option rows[] = {
 		{"c", print_char},
 		{"s", print_str},
-		{"%", print_char},
 		{NULL, NULL}
 	};
 

@@ -44,7 +44,6 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-	_putchar('\n');
 	va_end(list);
 	return (sum);
 }
@@ -65,6 +64,10 @@ int (*aux_function(const char *format))(va_list)
 	option rows[] = {
 		{"c", print_char},
 		{"s", print_str},
+		{"i", print_integer},
+		{"d", print_decimal},
+		{"R", print_rot13},
+		{"r", print_rev},
 		{NULL, NULL}
 	};
 

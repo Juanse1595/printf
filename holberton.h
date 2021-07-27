@@ -13,7 +13,7 @@
  * @letter: format specifier
  * @f: function pointer
  */
-
+/* test */
 typedef struct cases
 {
 	char *letter;

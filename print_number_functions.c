@@ -102,7 +102,7 @@ int print_bin(va_list n)
 		_putchar(resultinv[i]);
 	}
 	free(resultinv);
-	return (i);
+	return (i - 1);
 }
 
 /**

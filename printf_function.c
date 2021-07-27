@@ -79,16 +79,12 @@ int case_percentage(const char *format, va_list list)
 	int (*f)(va_list);
 
 	if (format[i + 1] == '%')
-	{
 		sum += _putchar('%');
-	}
 	else
 	{
 		f = aux_function(&format[i + 1]); /* i == %, send next value */
 		if (f)
-		{
 			sum = sum + f(list); /* Print input and return an integer*/
-		}
 		else
 		{
 			sum += _putchar('%');

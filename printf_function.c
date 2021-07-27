@@ -71,6 +71,7 @@ int (*aux_function(const char *format))(va_list)
 		{"b", print_bin},
 		{"x", print_hex},
 		{"X", print_hex},
+		{"p", print_address},
 		{NULL, NULL}
 	};
 

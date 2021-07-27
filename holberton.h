@@ -29,6 +29,8 @@ int print_integer(va_list);
 int print_decimal(va_list);
 int print_rot13(va_list);
 int print_rev(va_list);
+int print_bin(va_list);
+int print_hex(va_list);
 
 void _print_rev(char *s);
 int _abs(int n);

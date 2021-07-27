@@ -68,6 +68,9 @@ int (*aux_function(const char *format))(va_list)
 		{"d", print_decimal},
 		{"R", print_rot13},
 		{"r", print_rev},
+		{"b", print_bin},
+		{"x", print_hex},
+		{"X", print_hex},
 		{NULL, NULL}
 	};
 

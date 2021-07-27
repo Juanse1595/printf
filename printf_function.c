@@ -8,7 +8,6 @@
 int _printf(const char *format, ...)
 {
 	va_list list;
-	int (*f)(va_list);
 	int i = 0, sum = 0;
 
 	if (!format)
@@ -18,28 +17,8 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-			{
-				_putchar('%');
-				i++;
-				sum++;
-			}
-			else
-			{
-				f = aux_function(&format[i + 1]); /* i == %, send next value */
-				if (f)
-				{
-					sum = sum + f(list); /* Print input and return an integer*/
-					i++;
-				}
-				else
-				{
-					_putchar('%');
-					_putchar(format[i + 1]);
-					sum = sum + 2;
-					i++;
-				}
-			}
+			sum = sum + case_percentage(&format[i], list);
+			i++;
 		}
 		else
 		{
@@ -87,4 +66,39 @@ int (*aux_function(const char *format))(va_list)
 	}
 
 	return (rows[j].f);
+}
+
+/**
+ * case_percentage - contains the cases where the current
+ * char is a %
+ * @format: pointer to the current char in format string
+ * @list: pointer to the optional arguments
+ * Return: counter of the printed chars
+ */
+
+int case_percentage(const char *format, va_list list)
+{
+	int i = 0, sum = 0;
+	int (*f)(va_list);
+
+	if (format[i + 1] == '%')
+	{
+		_putchar('%');
+		sum++;
+	}
+	else
+	{
+		f = aux_function(&format[i + 1]); /* i == %, send next value */
+		if (f)
+		{
+			sum = sum + f(list); /* Print input and return an integer*/
+		}
+		else
+		{
+			_putchar('%');
+			_putchar(format[i + 1]);
+			sum = sum + 2;
+		}
+	}
+	return (sum);
 }

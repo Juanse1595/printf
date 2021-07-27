@@ -37,6 +37,9 @@ int print_address(va_list p)
 	int count = 2;
 	unsigned long value = va_arg(p, unsigned long int);
 
+	if (!value)
+		return (_printf("(nil)"));
+
 	_putchar('0');
 	_putchar('x');
 	count += hex_to_string(value, 1);

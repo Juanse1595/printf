@@ -31,7 +31,8 @@ int print_decimal(va_list);
 int print_rot13(va_list);
 int print_rev(va_list);
 int print_bin(va_list);
-int print_hex(va_list);
+int print_hex_minus(va_list);
+int print_hex_mayus(va_list);
 int print_address(va_list);
 
 void _print_rev(char *s);

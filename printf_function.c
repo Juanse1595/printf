@@ -21,10 +21,7 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		else
-		{
-			_putchar(format[i]);
-			sum++;
-		}
+			sum += _putchar(format[i]);
 		i++;
 	}
 	va_end(list);
@@ -49,8 +46,8 @@ int (*aux_function(const char *format))(va_list)
 		{"R", print_rot13},
 		{"r", print_rev},
 		{"b", print_bin},
-		{"x", print_hex},
-		{"X", print_hex},
+		{"x", print_hex_minus},
+		{"X", print_hex_mayus},
 		{"p", print_address},
 		{NULL, NULL}
 	};
@@ -83,8 +80,7 @@ int case_percentage(const char *format, va_list list)
 
 	if (format[i + 1] == '%')
 	{
-		_putchar('%');
-		sum++;
+		sum += _putchar('%');
 	}
 	else
 	{
@@ -95,9 +91,8 @@ int case_percentage(const char *format, va_list list)
 		}
 		else
 		{
-			_putchar('%');
-			_putchar(format[i + 1]);
-			sum = sum + 2;
+			sum += _putchar('%');
+			sum += _putchar(format[i + 1]);
 		}
 	}
 	return (sum);

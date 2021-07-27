@@ -34,6 +34,10 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
+					_putchar('%');
+					_putchar(format[i + 1]);
+					sum = sum + 2;
+					i++;
 				}
 			}
 		}
@@ -47,14 +51,11 @@ int _printf(const char *format, ...)
 	va_end(list);
 	return (sum);
 }
-
 /**
  * aux_function - look and compare with the chars content in va_list
  * @format: pointer that has the address of format in 'i' position
- *
  * Return: pointer to the adrress of the function or NULL if not match
  */
-
 int (*aux_function(const char *format))(va_list)
 {
 	/*  int (*f)(va_list) */

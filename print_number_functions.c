@@ -48,7 +48,7 @@ int print_integer(va_list i)
 		store[0] = 7 + '0';
 		}
 	_print_rev(store);
-	return (counter + 2);
+	return (counter + 1);
 }
 
 /**

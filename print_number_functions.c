@@ -75,10 +75,11 @@ int print_decimal(va_list d)
 
 int print_bin(va_list n)
 {
-	int i, j, num;
+	int i, j, num, sum;
 	char result[32], *resultinv;
 
 	i = 0;
+	sum = 0;
 	num = va_arg(n, int);
 	while (num > 0)
 	{
@@ -99,10 +100,10 @@ int print_bin(va_list n)
 	resultinv[j] = '\0';
 	for (i = 0; resultinv[i] ; i++)
 	{
-		_putchar(resultinv[i]);
+		sum += _putchar(resultinv[i]);
 	}
 	free(resultinv);
-	return (i - 1);
+	return (sum);
 }
 
 /**

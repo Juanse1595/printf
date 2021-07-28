@@ -9,11 +9,18 @@
 
 int print_integer(va_list i)
 {
-	int number = va_arg(i, int);
-	int copy, counter = 0;
+	int number = va_arg(i, int), copy, counter = 0;
+	int case_min_int = 1, case_max_int = 1;
 	char store[50];
 
-	copy = number;
+	copy = number, case_min_int = number;
+	if (number == -2147483648)
+	{
+	number = 2147483647;
+	case_min_int = 2;
+	}
+	else if (number == 2147483647)
+		case_max_int = 2;
 	number = _abs(number);
 	store[counter] = number % 10 + '0';
 	while (number / 10)
@@ -29,9 +36,19 @@ int print_integer(va_list i)
 		counter++;
 	}
 	else
+	{
 		store[counter + 1] = '\0';
+	}
+		if (case_min_int == 2)
+		{
+		store[0] = 8 + '0';
+		}
+		if (case_max_int == 2)
+		{
+		store[0] = 7 + '0';
+		}
 	_print_rev(store);
-	return (counter + 1);
+	return (counter + 2);
 }
 
 /**

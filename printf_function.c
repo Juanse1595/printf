@@ -96,6 +96,11 @@ int case_percentage(const char *format, va_list list)
 				sum += _putchar('%');
 				sum += _putchar('\n');
 			}
+			else
+			{
+				sum += _putchar('%');
+				sum += _putchar(format[i + 1]);
+			}
 		}
 	}
 	return (sum);

@@ -25,6 +25,8 @@ int print_str(va_list s)
 	char *word = va_arg(s, char *);
 	int i;
 
+	if (word == 0)
+		return (_printf("(null)"));
 	for (i = 0; word[i]; i++)
 	{
 		_putchar(word[i]);

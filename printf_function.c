@@ -10,14 +10,14 @@ int _printf(const char *format, ...)
 	va_list list;
 	int i = 0, sum = 0;
 
-	if (!format)
+	if (format == '\0')
 		return (-1);
 	va_start(list, format);
-	while (format[i]) /* loop outside*/
+	while (format[i] != '\0') /* loop outside*/
 	{
 		if (format[i] == '%')
 		{
-			if (!format[i + 1])
+			if (format[i + 1] != '\0')
 				return (-1);
 
 			sum = sum + case_percentage(&format[i], list);
@@ -89,6 +89,11 @@ int case_percentage(const char *format, va_list list)
 		f = aux_function(&format[i + 1]); /* i == %, send next value */
 		if (f)
 			sum = sum + f(list); /* Print input and return an integer*/
+		else
+		{
+			if (format[i + 1] == '\n')
+				sum += _putchar('\n');
+		}
 	}
 	return (sum);
 }

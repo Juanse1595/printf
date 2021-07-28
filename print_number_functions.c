@@ -59,12 +59,21 @@ int print_integer(va_list i)
 
 int print_bin(va_list n)
 {
-	int i, j, num, sum;
+	int i, j, sum, num;
 	char result[32], *resultinv;
 
 	i = 0;
 	sum = 0;
-	num = va_arg(n, int);
+	num = va_arg(n, unsigned int);
+	if (num == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	else if (num < 0)
+	{
+		return (0);
+	}
 	while (num > 0)
 	{
 		if (num % 2 == 0)

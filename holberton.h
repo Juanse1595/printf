@@ -27,7 +27,6 @@ int print_str(va_list);
 int (*aux_function(const char *format))(va_list);
 int case_percentage(const char *format, va_list list);
 int print_integer(va_list);
-int print_decimal(va_list);
 int print_rot13(va_list);
 int print_rev(va_list);
 int print_bin(va_list);

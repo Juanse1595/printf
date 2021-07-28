@@ -45,7 +45,7 @@ int (*aux_function(const char *format))(va_list)
 		{"c", print_char},
 		{"s", print_str},
 		{"i", print_integer},
-		{"d", print_decimal},
+		{"d", print_integer},
 		{"R", print_rot13},
 		{"r", print_rev},
 		{"b", print_bin},

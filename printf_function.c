@@ -17,6 +17,9 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			if (!format[i + 1])
+				return (-1);
+
 			sum = sum + case_percentage(&format[i], list);
 			i++;
 		}
@@ -82,8 +85,6 @@ int case_percentage(const char *format, va_list list)
 		sum += _putchar('%');
 	else
 	{
-		if (!format[i + 1])
-			return (-1);
 
 		f = aux_function(&format[i + 1]); /* i == %, send next value */
 		if (f)

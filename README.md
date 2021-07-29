@@ -9,6 +9,9 @@ For this program to run, we suggest you use it in **Ubuntu 20.04.2 LTS (Focal Fo
 ```shell
 gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
 ```
+
+![first screenshot](/images/1.png)
+
 This command will create the executable a.out. To give it a custom name, add the flag -o followed by the name (e.g gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c -o _printf_test). Notice that you need your version of a *main.c* file to test the function, or you can use the *main.c* file that is in the test directory.
 
 This repository contains the following files:

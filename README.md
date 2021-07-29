@@ -11,8 +11,18 @@ gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
 ```
 
 ![first screenshot](/images/1.png)
+![second screenshot](/images/2.png)
+
 
 This command will create the executable a.out. To give it a custom name, add the flag -o followed by the name (e.g gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c -o _printf_test). Notice that you need your version of a *main.c* file to test the function, or you can use the *main.c* file that is in the test directory.
+
+![third screenshot](/images/3.png)
+
+## Flowchart
+
+The following is a flowchart design to understand the algorithm of the _printf function:
+
+![flowchart](/images/flowchart.jpg)
 
 This repository contains the following files:
 

@@ -52,6 +52,7 @@ int (*aux_function(const char *format))(va_list)
 		{"x", print_hex_minus},
 		{"X", print_hex_mayus},
 		{"p", print_address},
+		{"S", print_S},
 		{NULL, NULL}
 	};
 

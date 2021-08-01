@@ -54,6 +54,7 @@ int (*aux_function(const char *format))(va_list)
 		{"p", print_address},
 		{"S", print_S},
 		{"u", print_u},
+		{"o", print_o},
 		{NULL, NULL}
 	};
 

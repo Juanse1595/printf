@@ -11,7 +11,7 @@ int print_integer(va_list i)
 {
 	int number = va_arg(i, int), copy, counter = 0;
 	int case_min_int = 1, case_max_int = 1;
-	char store[50];
+	char store[100];
 
 	copy = number, case_min_int = number;
 	if (number == -2147483648)
@@ -59,44 +59,21 @@ int print_integer(va_list i)
 
 int print_bin(va_list n)
 {
-	int i, j, sum, num;
-	char result[32], *resultinv;
+	int counter = 0;
+	char store[50];
+	unsigned long int number = va_arg(n, unsigned long int);
 
-	i = 0;
-	sum = 0;
-	num = va_arg(n, unsigned int);
-	if (num == 0)
+	store[counter] = number % 2 + '0';
+	while (number / 2)
 	{
-		_putchar('0');
-		return (1);
+		number = number / 2;
+		counter++;
+		store[counter] = number % 2 + '0';
 	}
-	else if (num < 0)
-	{
-		return (0);
-	}
-	while (num > 0)
-	{
-		if (num % 2 == 0)
-			result[i] = '0';
-		else
-			result[i] = '1';
-		num = num / 2;
-		i++;
-	}
-	result[i] = '\0';
-	resultinv = malloc(i + 1);
-	i--;
-	for (j = 0; i >= 0; i--, j++)
-	{
-		resultinv[j] = result[i];
-	}
-	resultinv[j] = '\0';
-	for (i = 0; resultinv[i] ; i++)
-	{
-		sum += _putchar(resultinv[i]);
-	}
-	free(resultinv);
-	return (sum);
+	store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
 }
 
 /**

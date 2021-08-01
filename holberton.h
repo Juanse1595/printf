@@ -34,6 +34,7 @@ int print_hex_minus(va_list);
 int print_hex_mayus(va_list);
 int print_address(va_list);
 int print_S(va_list);
+int print_u(va_list);
 
 void _print_rev(char *s);
 int _abs(int n);

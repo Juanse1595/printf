@@ -180,3 +180,33 @@ int print_hex_mayus(va_list num)
 	}
 	return (count);
 }
+
+/**
+ * print_u - print unsigned in decimal notation
+ * @u: unsigned int received to print
+ * Return: Number of digits printed
+ */
+
+int print_u(va_list u)
+{
+	unsigned long int number = va_arg(u, unsigned long int);
+	int counter = 0;
+	char store[100];
+
+	if (number > 4294967295)
+	{
+		return (_printf("1023"));
+	}
+
+	store[counter] = number % 10 + '0';
+	while (number / 10)
+	{
+		number /= 10;
+		counter++;
+		store[counter] = number % 10 + '0';
+	}
+		store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
+}

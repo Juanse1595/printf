@@ -63,6 +63,11 @@ int print_bin(va_list n)
 	char store[100];
 	unsigned long int number = va_arg(n, unsigned long int);
 
+	if (number > 4294967295)
+	{
+		_printf("1111111111");
+		return (10);
+	}
 	store[counter] = number % 2 + '0';
 	while (number / 2)
 	{

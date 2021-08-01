@@ -60,7 +60,7 @@ int print_integer(va_list i)
 int print_bin(va_list n)
 {
 	int counter = 0;
-	char store[50];
+	char store[100];
 	unsigned long int number = va_arg(n, unsigned long int);
 
 	store[counter] = number % 2 + '0';

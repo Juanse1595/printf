@@ -87,48 +87,28 @@ int print_bin(va_list n)
  * Return: count of char printed
  */
 
-int print_hex_minus(va_list num)
-{int n = va_arg(num, int);
-	int aux = n, i = 0, j = 0, k, a = 1, aux2 = 0, count = 0;
-	int arr1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-10, 11, 12, 13, 14, 15, -1};
-	char arr2[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-'a', 'b', 'c', 'd', 'e', 'f'};
+int print_hex_minus(va_list h)
+{
+	unsigned long int number = va_arg(h, unsigned long int);
+	int counter = 0;
+	char store[100], codification[] = "0123456789abcdef";
 
-	while (aux > 15)
+	if (number > 4294967295)
 	{
-		aux = aux / 16;
-		i++;
+		return (_printf("3ff"));
 	}
-	while (i > 0)
+
+	store[counter] = codification[number % 16];
+	while (number / 16)
 	{
-		while (j < i)
-		{
-			a = a * 16;
-			j++;
-		}
-		aux2 = n / a;
-		for (k = 0; arr1[k] >= 0; k++)
-		{
-			if (arr1[k] == aux2)
-			{
-				_putchar(arr2[k]);
-				count++;
-				break;
-			}
-		}
-		i--, n = n % a, j = 0, a = 1;
+		number /= 16;
+		counter++;
+		store[counter] = codification[number % 16];
 	}
-	for (k = 0; arr1[k] >= 0; k++)
-	{
-		if (arr1[k] == n)
-		{
-			_putchar(arr2[k]);
-			count++;
-			break;
-		}
-	}
-	return (count);
+		store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
 }
 
 /**
@@ -137,48 +117,28 @@ int print_hex_minus(va_list num)
  * Return: count of char printed
  */
 
-int print_hex_mayus(va_list num)
-{int n = va_arg(num, int);
-	int aux = n, i = 0, j = 0, k, a = 1, aux2 = 0, count = 0;
-	int arr1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-10, 11, 12, 13, 14, 15, -1};
-	char arr2[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-'A', 'B', 'C', 'D', 'E', 'F'};
+int print_hex_mayus(va_list H)
+{
+	unsigned long int number = va_arg(H, unsigned long int);
+	int counter = 0;
+	char store[100], codification[] = "0123456789ABCDEF";
 
-	while (aux > 15)
+	if (number > 4294967295)
 	{
-		aux = aux / 16;
-		i++;
+		return (_printf("3FF"));
 	}
-	while (i > 0)
+
+	store[counter] = codification[number % 16];
+	while (number / 16)
 	{
-		while (j < i)
-		{
-			a = a * 16;
-			j++;
-		}
-		aux2 = n / a;
-		for (k = 0; arr1[k] >= 0; k++)
-		{
-			if (arr1[k] == aux2)
-			{
-				_putchar(arr2[k]);
-				count++;
-				break;
-			}
-		}
-		i--, n = n % a, j = 0, a = 1;
+		number /= 16;
+		counter++;
+		store[counter] = codification[number % 16];
 	}
-	for (k = 0; arr1[k] >= 0; k++)
-	{
-		if (arr1[k] == n)
-		{
-			_putchar(arr2[k]);
-			count++;
-			break;
-		}
-	}
-	return (count);
+		store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
 }
 
 /**

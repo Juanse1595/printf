@@ -11,7 +11,7 @@ int print_integer(va_list i)
 {
 	int number = va_arg(i, int), copy, counter = 0;
 	int case_min_int = 1, case_max_int = 1;
-	char store[50];
+	char store[100];
 
 	copy = number, case_min_int = number;
 	if (number == -2147483648)
@@ -59,44 +59,26 @@ int print_integer(va_list i)
 
 int print_bin(va_list n)
 {
-	int i, j, sum, num;
-	char result[32], *resultinv;
+	int counter = 0;
+	char store[100];
+	unsigned long int number = va_arg(n, unsigned long int);
 
-	i = 0;
-	sum = 0;
-	num = va_arg(n, unsigned int);
-	if (num == 0)
+	if (number > 4294967295)
 	{
-		_putchar('0');
-		return (1);
+		_printf("1111111111");
+		return (10);
 	}
-	else if (num < 0)
+	store[counter] = number % 2 + '0';
+	while (number / 2)
 	{
-		return (0);
+		number = number / 2;
+		counter++;
+		store[counter] = number % 2 + '0';
 	}
-	while (num > 0)
-	{
-		if (num % 2 == 0)
-			result[i] = '0';
-		else
-			result[i] = '1';
-		num = num / 2;
-		i++;
-	}
-	result[i] = '\0';
-	resultinv = malloc(i + 1);
-	i--;
-	for (j = 0; i >= 0; i--, j++)
-	{
-		resultinv[j] = result[i];
-	}
-	resultinv[j] = '\0';
-	for (i = 0; resultinv[i] ; i++)
-	{
-		sum += _putchar(resultinv[i]);
-	}
-	free(resultinv);
-	return (sum);
+	store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
 }
 
 /**
@@ -105,48 +87,28 @@ int print_bin(va_list n)
  * Return: count of char printed
  */
 
-int print_hex_minus(va_list num)
-{int n = va_arg(num, int);
-	int aux = n, i = 0, j = 0, k, a = 1, aux2 = 0, count = 0;
-	int arr1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-10, 11, 12, 13, 14, 15, -1};
-	char arr2[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-'a', 'b', 'c', 'd', 'e', 'f'};
+int print_hex_minus(va_list h)
+{
+	unsigned long int number = va_arg(h, unsigned long int);
+	int counter = 0;
+	char store[100], codification[] = "0123456789abcdef";
 
-	while (aux > 15)
+	if (number > 4294967295)
 	{
-		aux = aux / 16;
-		i++;
+		return (_printf("3ff"));
 	}
-	while (i > 0)
+
+	store[counter] = codification[number % 16];
+	while (number / 16)
 	{
-		while (j < i)
-		{
-			a = a * 16;
-			j++;
-		}
-		aux2 = n / a;
-		for (k = 0; arr1[k] >= 0; k++)
-		{
-			if (arr1[k] == aux2)
-			{
-				_putchar(arr2[k]);
-				count++;
-				break;
-			}
-		}
-		i--, n = n % a, j = 0, a = 1;
+		number /= 16;
+		counter++;
+		store[counter] = codification[number % 16];
 	}
-	for (k = 0; arr1[k] >= 0; k++)
-	{
-		if (arr1[k] == n)
-		{
-			_putchar(arr2[k]);
-			count++;
-			break;
-		}
-	}
-	return (count);
+		store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
 }
 
 /**
@@ -155,46 +117,56 @@ int print_hex_minus(va_list num)
  * Return: count of char printed
  */
 
-int print_hex_mayus(va_list num)
-{int n = va_arg(num, int);
-	int aux = n, i = 0, j = 0, k, a = 1, aux2 = 0, count = 0;
-	int arr1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-10, 11, 12, 13, 14, 15, -1};
-	char arr2[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-'A', 'B', 'C', 'D', 'E', 'F'};
+int print_hex_mayus(va_list H)
+{
+	unsigned long int number = va_arg(H, unsigned long int);
+	int counter = 0;
+	char store[100], codification[] = "0123456789ABCDEF";
 
-	while (aux > 15)
+	if (number > 4294967295)
 	{
-		aux = aux / 16;
-		i++;
+		return (_printf("3FF"));
 	}
-	while (i > 0)
+
+	store[counter] = codification[number % 16];
+	while (number / 16)
 	{
-		while (j < i)
-		{
-			a = a * 16;
-			j++;
-		}
-		aux2 = n / a;
-		for (k = 0; arr1[k] >= 0; k++)
-		{
-			if (arr1[k] == aux2)
-			{
-				_putchar(arr2[k]);
-				count++;
-				break;
-			}
-		}
-		i--, n = n % a, j = 0, a = 1;
+		number /= 16;
+		counter++;
+		store[counter] = codification[number % 16];
 	}
-	for (k = 0; arr1[k] >= 0; k++)
+		store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
+}
+
+/**
+ * print_u - print unsigned in decimal notation
+ * @u: unsigned int received to print
+ * Return: Number of digits printed
+ */
+
+int print_u(va_list u)
+{
+	unsigned long int number = va_arg(u, unsigned long int);
+	int counter = 0;
+	char store[100];
+
+	if (number > 4294967295)
 	{
-		if (arr1[k] == n)
-		{
-			_putchar(arr2[k]);
-			count++;
-			break;
-		}
+		return (_printf("1023"));
 	}
-	return (count);
+
+	store[counter] = number % 10 + '0';
+	while (number / 10)
+	{
+		number /= 10;
+		counter++;
+		store[counter] = number % 10 + '0';
+	}
+		store[counter + 1] = '\0';
+
+	_print_rev(store);
+	return (counter + 1);
 }
